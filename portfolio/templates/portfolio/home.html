@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<title>home</title>
+	
+</head>
+<body id="home" onload="">
+	<h1 id="portfolio">portfolio</h1>
+	{% for project in project_list %}
+	<h2 id="">{{ project.name }}</h2>
+	<h3>{{ project.context.name }}</h3>
+	<p>{{ project.summary }}</p>
+	<ul>
+		{% for detail in project.details.all %}
+		<li>
+			<h4>{{ detail.name }}</h4>
+			<p>{{ detail.desc }}</p>
+			{% if detail.file %}
+			<img src="{{ detail.file.url }}">
+			{% elif detail.video %}
+			{% load embed_video_tags %}
+			{{ detail.video|embed:'medium' }}
+			{% endif %}
+		</li>
+		{% endfor %}
+	</ul>
+	{% endfor %}
+</body>
+</html>

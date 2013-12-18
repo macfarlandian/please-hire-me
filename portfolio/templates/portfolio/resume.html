@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<title>resume</title>
+	
+</head>
+<body id="home" onload="">
+	<h1>résumé - Ian MacFarland</h1>
+	
+	<h1><em>education</em></h1>
+	{% for school in schools %}
+	<h2>{{ school.name }}</h2>
+	<h3>{{ school.location }}</h3>
+	<h4>{{ school.degree }}</h4>
+	<p>{{ school.startdate }} - {{ school.enddate }}</p>
+	<ul>
+		{% for detail in school.details.all %}
+		<li><strong>{{ detail.name }}</strong>: {{ detail.desc }}</li>
+		{% endfor %}
+	</ul>	
+	{% endfor %}
+	
+	<h1><em>jobs</em></h1>
+	{% for job in jobs %}
+	<h2>{{ job.name }}</h2>
+	<h3>{{ job.org }}</h3>
+	<h4>{{ job.location }}</h4>
+	<p>{{ job.startdate }} - {{ job.enddate }}</p>
+	<ul>
+		{% for detail in job.details.all %}
+		<li><strong>{{ detail.name }}</strong>: {{ detail.desc }}</li>
+		{% endfor %}
+	</ul>
+	{% endfor %}
+	
+	<h1><em>skills</em></h1>
+	<ul>
+	{% for area in skillareas %}
+	<li>
+		{{ area.name }} –&nbsp;
+		{% for skill in area.skills.all %}
+		{{ skill.name }} •&nbsp;
+		{% endfor %}
+	</li>
+	{% endfor %}
+	</ul>
+	
+	<h1><em>awards</em></h1>
+	<ul>
+	{% for award in awards %}
+	<li>
+		{{ award.name }} ({{ award.org }})
+	</li>
+	{% endfor %}
+	</ul>
+</body>
+</html>

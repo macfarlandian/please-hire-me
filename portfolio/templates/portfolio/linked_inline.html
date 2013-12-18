@@ -1,0 +1,31 @@
+{% load i18n %}
+
+<div class="inline-group">
+	<h2>{{ inline_admin_formset.opts.verbose_name_plural|title}}</h2>
+	{{ inline_admin_formset.formset.management_form }}
+	{{ inline_admin_formset.formset.non_form_errors }}
+
+{% for inline_admin_form in inline_admin_formset %}
+<div class="inline-related {% if forloop.last %}last-related{% endif %}">
+	<h3>
+		<b>{{ inline_admin_formset.opts.verbose_name|title  }}:</b>
+		&nbsp;
+		<a href="/admin/{{ app_label }}/{{ inline_admin_formset.opts.admin_model_path }}/{% if inline_admin_form.original %}{{ inline_admin_form.original.id }}/{% else %}add/?parent={{ original.id }}{% endif %}" target="_blank">
+			{% if inline_admin_form.original %}
+				{{ inline_admin_form.original }}
+			{% else %}
+				Add new
+			{% endif %}
+		</a>
+	    {% if inline_admin_formset.formset.can_delete and inline_admin_form.original %}
+		<span class="delete">
+			{{ inline_admin_form.deletion_field.field }} 
+			{{ inline_admin_form.deletion_field.label_tag }}
+		</span>
+		{% endif %}
+  </h3>
+  {{ inline_admin_form.pk_field.field }}
+  {{ inline_admin_form.fk_field.field }}
+</div>
+{% endfor %}
+</div>
