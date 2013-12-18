@@ -6,16 +6,16 @@
 	
 </head>
 <body id="home" onload="">
-	<h1 id="portfolio">portfolio</h1>
+	<h1 id="portfolio">best portfolio ever, man</h1>
 	{% for project in project_list %}
-	<h2 id="">{{ project.name }}</h2>
-	<h3>{{ project.context.name }}</h3>
-	<p>{{ project.summary }}</p>
+	<h2><em>project name:</em> {{ project.name }}</h2>
+	<h3><em>context:</em> {{ project.context.name }}</h3>
+	<p><em>summary:</em> {{ project.summary }}</p>
 	<ul>
 		{% for detail in project.details.all %}
 		<li>
-			<h4>{{ detail.name }}</h4>
-			<p>{{ detail.desc }}</p>
+			<h4><em>detail:</em> {{ detail.name }}</h4>
+			<p><em>description:</em> {{ detail.desc }}</p>
 			{% if detail.file %}
 			<img src="{{ detail.file.url }}">
 			{% elif detail.video %}
