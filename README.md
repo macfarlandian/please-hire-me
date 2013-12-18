@@ -25,10 +25,10 @@ a Django app for building an online portfolio and resume
 *	name
 *	order
 *	description
-*	*types of **Details**:*
+*	*types of Details:*
 	*	**ProjectDetail**
 		* parent (relation to a **Project**)
-		* *types of **ProjectDetails**:*
+		* *types of ProjectDetails:*
 			* **ImageUpload**
 				* file
 			* **VideoEmbed**
@@ -50,7 +50,7 @@ a Django app for building an online portfolio and resume
 
 * name
 * slug
-* *types of **Contexts**:*
+* *types of Contexts:*
 	* generic
 	* **Job**
 		* organization
