@@ -17,7 +17,7 @@ a Django app for building an online portfolio and resume
 *	slug (url-safe version of name)
 *	order
 *	date
-*	summary
+*	description
 
 **Detail**
 
@@ -48,6 +48,7 @@ scaffolding for arranging your **Jobs **and other **Contexts**
 * website
 * linkedin
 * twitter
+* etc
 
 
 * **Blocks**
