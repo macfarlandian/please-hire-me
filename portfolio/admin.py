@@ -2,6 +2,7 @@ from django.contrib import admin
 from portfolio import models
 from polymorphic.admin import PolymorphicParentModelAdmin, PolymorphicChildModelAdmin
 
+
 # new inline admin subclass, for providing links
 # http://www.juripakaste.fi/blog/django-admin-inline-link.html
 class LinkedInline(admin.options.InlineModelAdmin):
@@ -17,6 +18,7 @@ class LinkedInline(admin.options.InlineModelAdmin):
 class ProjectDetailAdmin(PolymorphicChildModelAdmin):
     """ base admin class for detail types """
     base_model = models.ProjectDetail
+    
 
 class ProjectDetailsAdmin(PolymorphicParentModelAdmin):
     """ parent admin for detail types """
@@ -55,11 +57,17 @@ class DetailInline(LinkedInline):
 class ProjectAdmin(admin.ModelAdmin):
     inlines = [ DetailInline, ]
     prepopulated_fields = {'slug': ('name',)}
+    class Media:
+        js = [
+                '/static/grappelli/tinymce/jscripts/tiny_mce/tiny_mce.js',
+                '/static/grappelli/tinymce_setup/tinymce_setup.js',
+            ]
     
 class ContextAdmin(PolymorphicChildModelAdmin):
     """ base admin class for contexts """
     base_model = models.Context
     prepopulated_fields = {'slug': ('name',)}
+    
     
 class ContextsAdmin(PolymorphicParentModelAdmin):
     """ parent admin for contexts """

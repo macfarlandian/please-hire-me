@@ -10,7 +10,7 @@
 	{% for project in project_list %}
 	<h2><em>project name:</em> {{ project.name }}</h2>
 	<h3><em>context:</em> {{ project.context.name }}</h3>
-	<p><em>summary:</em> {{ project.summary }}</p>
+	<p><em>summary:</em> {{ project.summary|safe }}</p>
 	<ul>
 		{% for detail in project.details.all %}
 		<li>
