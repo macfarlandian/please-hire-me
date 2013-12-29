@@ -6,10 +6,11 @@ a Django app for building an online portfolio and resume
 *	Django 1.5x
 
 ###django app dependencies
-*	django-embed-video
-*	django-polymorphic
+* django-embed-video
+* django-grappelli
 
 ## data model
+
 **Project**
 
 *	name
@@ -17,50 +18,72 @@ a Django app for building an online portfolio and resume
 *	order
 *	date
 *	summary
-*	context (relation to a **Context**, see below)
-*	details (relations to one or more **ProjectDetails**, see below)
 
 **Detail**
 
-*	name
-*	order
-*	description
-*	*types of Details:*
-	*	**ProjectDetail**
-		* parent (relation to a **Project**)
-		* *types of ProjectDetails:*
-			* **ImageUpload**
-				* file
-			* **VideoEmbed**
-				* video url (handled by django-embed-video app)
-			* **Bullet** (no additional fields)
-	* **JobDetail**
-		* parent (relation to a **Job**, see below)
-	* **SchoolDetail**
-		* parent (relation to a **School**, see below)
-	* **SkillArea**
-		* skills (relations to one or more **Skills**)
-	* **Skill**
-		* parent (relation to a **SkillArea**)
-	* **Award**
-		* organization
-		* date
+* name
+* order
+* description
+* image file
+* video url (handled by django-embed-video app)
+	
 
 **Context**
 
 * name
 * slug
-* *types of Contexts:*
-	* generic
-	* **Job**
-		* organization
-		* startdate
-		* enddate (optional)
-		* location
-		* details (relations to one or more **JobDetails**)
-	* **School**
-		* location
-		* degree
-		* startdate
-		* enddate
-		* details (relations to one or more **SchoolDetails**)
+* organization
+* startdate
+* enddate
+* location
+* description
+
+**Resume**
+scaffolding for arranging your **Jobs **and other **Contexts**
+
+* name
+* address
+* phone
+* email
+* website
+* linkedin
+* twitter
+
+
+* **Blocks**
+assembled to form a **Resume**
+
+* name
+* description
+
+		
+		
+## relationship architecture
+
+**Project**:
+
+* CONTAINS one or more **Details**
+* RELATED TO one **Context**
+
+**Context** (job, school, etc):
+
+* RELATED TO zero or more **Projects**
+
+**Portfolio**:
+
+* INCLUDES one or more **Projects**
+
+**Resume**:
+
+* CONTAINS one or more **Blocks**
+
+**Block** 
+
+Summary form:
+
+* no relations
+
+Collection form:
+
+* INCLUDES one or more **Contexts**
+* INCLUDES zero or more **Collection Blocks** (nesting)
