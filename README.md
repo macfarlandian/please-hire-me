@@ -1,5 +1,5 @@
 # please hire me
-a Django app for building an online portfolio and resume.
+A Django app for building an online portfolio and resume.
 
 The goal for this app is to enable the creation of an integrated portfolio/resume website that connects your projects with your jobs and education to tell the story of your career in a more holistic way than either a portfolio or resume can do on its own. 
 
@@ -19,20 +19,73 @@ When built out, it should also generate a more traditionally printable (PDF) and
 
 ## Data model
 
-**Project**
+![ER diagram](/docs/img/PleaseHireMeER.png "Entity-Relationship diagram")
 
-Projects are the items in your portfolio. They can include zero or more Details, which are text bullets or multimedia items.
+**Header**
+
+Contact and social media information. For a portfolio/site with a single user, this will probably only have one row. 
 
 Attributes:
 
-*	name
-*	slug (url-safe version of name)
-*	order
-*	date
-*	introduction
-*	frontpage-summary
-*	details (relationship to Details)
-*	role (relationship to a Role)
+* HeaderID: primary key
+* Name: user's name, as it will appear on site and resume
+* AddressStreet: street address, including unit number
+* AddressCityStateZip: city, state, and postal abbreviation as formatted on resume
+* Phone: phone number, as formatted on resume
+* Email: email address
+* Website: URL, excluding "http://"
+* LinkedIn: URL, excluding "http://"
+* Twitter: user handle without "at" symbol (e.g., "TwitterUser" or "twitteruser", not "@twitteruser")
+* Other: catchall for whatever else you want to include
+
+**Section**
+
+A section can be standalone text (e.g., an 'Objective', a list of 'Skills' or 'Publications', etc.) or they can be a container for a "collection" of Roles (e.g., an 'Education' section would include schools, 'Experience' would have jobs, etc.).
+
+Attributes: 
+
+* SectionID: primary key
+* HeaderID: foreign key to Header
+* Name: title of the section, as it will appear on site and resume
+* Slug: URL-friendly Name (is this necessary?)
+* Order: integer indicating order within resume
+* Description: text description
+
+**Role**
+
+Roles are jobs, degree programs, volunteer positions and other occupations that make up your career history. They serve a dual function. 
+
+1. Roles can be linked to zero or more Projects. This link is bi-directional: the Projects serve as examples of your work in that Role, and the Role provides additional context for that Project.
+2. Roles can be displayed in your resume by collecting them into one or more of the Sections that make up your resume.
+
+Attributes: 
+
+* RoleID: primary key
+* SectionID: foreign key to Section
+* Name: job title, degree program, or other position name
+* Slug: URL-friendly Name
+* Order: integer indicating order within Section
+* Organization: institution where position was held or degree was obtained
+* StartDate: approximate start date of role (YYYY-MM-DD)
+* EndDate: approximate end date of role (YYYY-MM-DD)
+* Location: location of role (e.g., "San Francisco, CA")
+* Summary: short text description
+* LongDescription: long text description
+
+**Project**
+
+Projects are items in your portfolio. They must exist within a Role, and can include zero or more Details, which are text bullets or multimedia items.
+
+Attributes:
+
+* ProjectID: primary key
+* RoleID: foreign key to Role
+* Name: project title
+* Slug: URL-friendly Name
+* Order: integer indicating order within Role
+* Date: approximate completion date of project (YYYY-MM-DD)
+* Summary: short text description
+* LongDescription: long text description
 
 **Detail**
 
@@ -40,60 +93,26 @@ Details are text bullets or multimedia items (photo/video) that can be attached 
 
 Attributes: 
 
-* name
-* order
-* description
-* image file
-* video url (handled by django-embed-video app)
+* DetailID: primary key
+* ProjectID: foreign key to Project
+* Name: title of detail, if any (this might be the alt text for an image)
+* Order: integer indicating order within Project
+* Description: text description
+* Type: type of detail (enumerated: "Text", "Image", "Video")
+* URL: excluding "http://"
 
-**Role**
+**Tag**
 
-Roles are the jobs, degree programs, volunteer positions and other occupations that make up your career history. They serve a dual function. 
-
-1. Roles can be linked to zero or more Projects. This link is bi-directional: the Projects serve as examples of your work in that Role, and the Role provides additional context for that Project.
-2. Roles can be displayed in your resume by collecting them into one or more of the Sections that make up your resume (see below).
+Zero or more tags can be attached to Roles, Projects, or Details as desired.
 
 Attributes: 
 
-* name
-* slug
-* order
-* organization
-* startdate
-* enddate
-* location
-* introduction
-* long-description
-* projects (relationship to Projects)
+* TagID: primary key
+* Value: the text of the tag (e.g., "infoviz", "UX", "peer-reviewed", "pro bono")
+* FKType: type of object being tagged (enumerated: "Role", "Project", "Detail")
+* FKID: ID of object being tagged (foreign key to RoleID, ProjectID, or DetailID)
 
 *Your resume consists of a Resume Header followed by one or more Resume Sections. Descriptions follow.*
-
-**Resume Header**
-
-Relatively self-explanatory, yes? 
-
-Attributes:
-
-* name
-* address
-* phone
-* email
-* website
-* linkedin
-* twitter
-* etc (catchall for whatever else you want to include)
-
-
-**Resume Section**
-
-Resume Sections can be standalone text (e.g., an 'Objective,' a list of 'Skills' or 'Publications,' etc.) or they can contain "collections" of Roles (e.g., an 'Education' section would include schools, 'Experience' would have jobs, etc.).
-
-Attributes: 
-
-* name
-* description
-* order
-* collection (relationship to Roles)
 
 ## Testing Models
 I've found it instructive so far to map the resume model to actual resumes to discover potential issues and better ways to adapt and abstract the model so it can support a wider range of frontend resume designs. 
@@ -101,19 +120,21 @@ I've found it instructive so far to map the resume model to actual resumes to di
 Below are some (anonymized) examples, feel free to add your own. 
 
 ### Model: Resume
-![resume](https://raw.github.com/macfarlandian/please-hire-me/master/docs/img/resume1.png)
-![resume](https://raw.github.com/macfarlandian/please-hire-me/master/docs/img/resume2.png)
-![resume](https://raw.github.com/macfarlandian/please-hire-me/master/docs/img/resume3.png)
+![resume](/docs/img/resume1.png)
+![resume](/docs/img/resume2.png)
+![resume](/docs/img/resume3.png)
+![resume](/docs/img/resume4.png)
 
 
-### Model: Context
-![context](https://raw.github.com/macfarlandian/please-hire-me/master/docs/img/context1.png)
-![context](https://raw.github.com/macfarlandian/please-hire-me/master/docs/img/context2.png)
-![context](https://raw.github.com/macfarlandian/please-hire-me/master/docs/img/context3.png)
+### Model: Role
+![context](/docs/img/context1.png)
+![context](/docs/img/context2.png)
+![context](/docs/img/context3.png)
+![context](/docs/img/context4.png)
 
 ## requirements
-*	Python 2.7x
-*	Django 1.5x
+* Python 2.7x
+* Django 1.5x
 
 ###django app dependencies
 * django-embed-video
