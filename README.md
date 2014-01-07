@@ -85,6 +85,7 @@ Attributes:
 * Order: integer indicating order within Role
 * Date: approximate completion date of project (YYYY-MM-DD)
 * Summary: short text description
+* IndexImage: uploaded image to appear on project list page
 * LongDescription: long text description
 
 **Detail**

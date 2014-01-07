@@ -3,8 +3,8 @@
     "model": "portfolio.resumeheader",
     "pk": 1,
     "fields": {
-      "first_name": "Fake",
-      "last_name": "Name"
+      "first_name": "Your Name",
+      "last_name": "Here"
     }
   }, 
   {
@@ -33,7 +33,20 @@
 		  "name": "fake project",
 		  "role": 1,
 		  "slug": "fake-project",
-		  "order": 0
+		  "order": 10,
+		  "summary": "<p>This is my summary.</p><p>This is still my summary.</p>",
+		  "index_image": "year-in-review-splash1.jpg"
+	  }
+  },
+  {
+	  "model": "portfolio.project",
+	  "pk": 2,
+	  "fields": {
+		  "name": "fake project 2",
+		  "role": 1,
+		  "slug": "fake-project-2",
+		  "order": 5,
+		  "summary": "<p>This is my summary.</p><p>This is still my summary.</p>"
 	  }
   },
   {
