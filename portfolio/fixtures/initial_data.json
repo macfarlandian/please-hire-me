@@ -1,0 +1,48 @@
+[
+  {
+    "model": "portfolio.resumeheader",
+    "pk": 1,
+    "fields": {
+      "first_name": "Fake",
+      "last_name": "Name"
+    }
+  }, 
+  {
+	  "model": "portfolio.resumesection",
+	  "pk": 1,
+	  "fields": {
+		  "name": "Fake section",
+		  "header": 1,
+		  "order": 0,
+		  "roles": [1]
+	  }
+  },
+  {
+	  "model": "portfolio.role",
+	  "pk": 1,
+	  "fields": {
+		  "name": "fake role",
+		  "slug": "fake-role",
+		  "order": 0
+	  }
+  },
+  {
+	  "model": "portfolio.project",
+	  "pk": 1,
+	  "fields": {
+		  "name": "fake project",
+		  "role": 1,
+		  "slug": "fake-project",
+		  "order": 0
+	  }
+  },
+  {
+	  "model": "portfolio.detail",
+	  "pk": 1,
+	  "fields": {
+		  "name": "detail 1",
+		  "project": 1,
+		  "order": 0
+	  }
+  }
+]
