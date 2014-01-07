@@ -7,8 +7,8 @@ When built out, it should also generate a more traditionally printable (PDF) and
 
 ## TODO
 
-* finalize models
-* update models.py with final models
+* ~~finalize models~~
+* ~~update models.py with final models~~
 * create views for portfolio, project, resume, context
 * build up a template collection for different display options
 
@@ -21,7 +21,7 @@ When built out, it should also generate a more traditionally printable (PDF) and
 
 ![ER diagram](/docs/img/PleaseHireMeER.png "Entity-Relationship diagram")
 
-**Header**
+**ResumeHeader**
 
 Contact and social media information. For a portfolio/site with a single user, this will probably only have one row. 
 
@@ -38,7 +38,7 @@ Attributes:
 * Twitter: user handle without "at" symbol (e.g., "TwitterUser" or "twitteruser", not "@twitteruser")
 * Other: catchall for whatever else you want to include
 
-**Section**
+**ResumeSection**
 
 A section can be standalone text (e.g., an 'Objective', a list of 'Skills' or 'Publications', etc.) or they can be a container for a "collection" of Roles (e.g., an 'Education' section would include schools, 'Experience' would have jobs, etc.).
 
@@ -47,9 +47,10 @@ Attributes:
 * SectionID: primary key
 * HeaderID: foreign key to Header
 * Name: title of the section, as it will appear on site and resume
-* Slug: URL-friendly Name (is this necessary?)
 * Order: integer indicating order within resume
-* Description: text description
+* Roles: foreign keys to Roles to be collected in this section, if any
+* Summary: additional text or html content to be displayed in this section
+
 
 **Role**
 
@@ -61,7 +62,6 @@ Roles are jobs, degree programs, volunteer positions and other occupations that 
 Attributes: 
 
 * RoleID: primary key
-* SectionID: foreign key to Section
 * Name: job title, degree program, or other position name
 * Slug: URL-friendly Name
 * Order: integer indicating order within Section
