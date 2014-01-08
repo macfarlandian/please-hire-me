@@ -13,6 +13,12 @@ def project(request, slug):
     project = models.Project.objects.get(slug=slug)
     return render_to_response('portfolio/project.html', 
         {'project' : project}, RequestContext(request))
+
+def role(request, slug):
+    role = models.Role.objects.get(slug=slug)
+    return render_to_response('portfolio/role.html', 
+        {'role' : role}, RequestContext(request))
+
     
 def resume(request):
     jobs = models.Job.objects.all()

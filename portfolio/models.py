@@ -53,7 +53,7 @@ class ResumeSection(models.Model):
 
     name = models.CharField(max_length=255, 
         help_text="title of the section, as it should appear on site and resume")
-    header = models.ForeignKey('ResumeHeader', 
+    header = models.ForeignKey('ResumeHeader', related_name="sections",
         help_text = "the Resume Header this Section should appear under")
     order = models.IntegerField(help_text="integer indicating order within resume")
     roles = models.ManyToManyField('Role',
@@ -107,7 +107,7 @@ class Project(models.Model):
     """
     # attributes
     name = models.CharField(max_length=255)
-    role = models.ForeignKey('Role', 
+    role = models.ForeignKey('Role', related_name='projects',
         help_text="Role this Project is related to")
     slug = models.SlugField(help_text="url-friendly name for this Project")
     order = models.IntegerField(default=0,
@@ -138,7 +138,7 @@ class Detail(models.Model):
     """
     name = models.CharField(max_length=255,
         help_text="title of detail (can be alt text for an image)")
-    project = models.ForeignKey(Project, related_name="details",
+    project = models.ForeignKey('Project', related_name="details",
         help_text="Project that will include this Detail")
     order = models.IntegerField(default=0,
         help_text="integer indicating order within Project")

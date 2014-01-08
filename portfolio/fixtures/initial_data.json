@@ -23,7 +23,12 @@
 	  "fields": {
 		  "name": "fake role",
 		  "slug": "fake-role",
-		  "order": 0
+		  "order": 0,
+		  "org": "Fake Organization",
+		  "startdate": "2007-03-15",
+		  "enddate": "2011-05-04",
+		  "location": "New Jack City",
+		  "long_desc": "<ul><li>Bullet describing my job</li><li>Hey it's another bullet describing my job, how about that</li></ul>"
 	  }
   },
   {

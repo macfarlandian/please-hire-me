@@ -7,7 +7,7 @@
 </head>
 <body id="home" onload="">
 	<h1>{{ project.name }}</h1>
-	<h3>{{ project.role.name }}</h3>
+	<h3><a href="{% url 'role' slug=project.role.slug %}">{{ project.role.name }}</a></h3>
 	<div>
 		{{ project.intro|safe }}
 		<ul>
