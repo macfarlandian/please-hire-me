@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<title>home</title>
+	
+</head>
+<body id="home" onload="">
+	<h1>{{ project.name }}</h1>
+	<h3>{{ project.role.name }}</h3>
+	<div>
+		{{ project.intro|safe }}
+		<ul>
+			{% for detail in project.details.all %}
+			<li>
+				<h4>{{ detail.name }}</h4>
+				<div>
+					{% if detail.img %}
+					<img src="{{ detail.img.url }}">
+					{% elif detail.video %}
+					{% load embed_video_tags %}
+					{{ detail.video|embed:'medium' }}
+					{% endif %}
+					{{ detail.desc|safe }}
+				</div>
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+</body>
+</html>

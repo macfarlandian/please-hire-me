@@ -35,7 +35,7 @@
 		  "slug": "fake-project",
 		  "order": 10,
 		  "summary": "<p>This is my summary.</p><p>This is still my summary.</p>",
-		  "index_image": "year-in-review-splash1.jpg"
+		  "index_image": "images/year-in-review-splash1.jpg"
 	  }
   },
   {
@@ -46,7 +46,8 @@
 		  "role": 1,
 		  "slug": "fake-project-2",
 		  "order": 5,
-		  "summary": "<p>This is my summary.</p><p>This is still my summary.</p>"
+		  "summary": "<p>This is my summary.</p><p>This is still my summary.</p>",
+		  "intro": "<p>This is my intro.</p><p>This is still my intro.</p>"
 	  }
   },
   {
@@ -55,7 +56,30 @@
 	  "fields": {
 		  "name": "detail 1",
 		  "project": 1,
-		  "order": 0
+		  "order": 0,
+		  "desc": "<p>detail 1 description</p>",
+		  "video": "http://youtu.be/rO76EMOf0W8?t=25m55s"
+	  }
+  },
+  {
+	  "model": "portfolio.detail",
+	  "pk": 2,
+	  "fields": {
+		  "name": "detail 2",
+		  "project": 2,
+		  "order": 5,
+		  "desc": "<p>detail 2 description</p>"
+	  }
+  },
+  {
+	  "model": "portfolio.detail",
+	  "pk": 3,
+	  "fields": {
+		  "name": "detail 3",
+		  "project": 2,
+		  "order": 3,
+		  "desc": "<p>detail 3 description</p>",
+		  "img": "images/125855.jpg"
 	  }
   }
 ]
