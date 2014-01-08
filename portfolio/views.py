@@ -19,13 +19,8 @@ def role(request, slug):
     return render_to_response('portfolio/role.html', 
         {'role' : role}, RequestContext(request))
 
-    
 def resume(request):
-    jobs = models.Job.objects.all()
-    schools = models.School.objects.all
-    skillareas = models.SkillArea.objects.all
-    awards = models.Award.objects.all
-    return render_to_response('portfolio/resume.html', 
-        {'jobs' : jobs, 'schools': schools, 'skillareas': skillareas, 'awards': awards},
+    content = {'header' : models.ResumeHeader.objects.get(pk=1)}
+    return render_to_response('portfolio/resume.html', content, 
         RequestContext(request))
     

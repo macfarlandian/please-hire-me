@@ -6,6 +6,7 @@
 	
 </head>
 <body id="home" onload="">
+	{% include "portfolio/links.inc" %}
 	<h1>{{ project.name }}</h1>
 	<h3><a href="{% url 'role' slug=project.role.slug %}">{{ project.role.name }}</a></h3>
 	<div>

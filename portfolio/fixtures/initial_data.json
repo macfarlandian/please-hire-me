@@ -4,7 +4,11 @@
     "pk": 1,
     "fields": {
       "first_name": "Your Name",
-      "last_name": "Here"
+      "last_name": "Here",
+	  "address_city": "New Jack City",
+	  "address_state": "Delaware",
+	  "phone": "555-867-5309",
+	  "email": "fake@email.com"
     }
   }, 
   {
@@ -14,7 +18,8 @@
 		  "name": "Fake section",
 		  "header": 1,
 		  "order": 0,
-		  "roles": [1]
+		  "summary": "<p>Here I am, summarizing my resume section.</p>",
+		  "roles": [1,2,3]
 	  }
   },
   {
@@ -24,6 +29,34 @@
 		  "name": "fake role",
 		  "slug": "fake-role",
 		  "order": 0,
+		  "org": "Fake Organization",
+		  "startdate": "2007-03-15",
+		  "enddate": "2011-05-04",
+		  "location": "New Jack City",
+		  "long_desc": "<ul><li>Bullet describing my job</li><li>Hey it's another bullet describing my job, how about that</li></ul>"
+	  }
+  },
+  {
+	  "model": "portfolio.role",
+	  "pk": 2,
+	  "fields": {
+		  "name": "fake role 2",
+		  "slug": "fake-role-2",
+		  "order": 5,
+		  "org": "Fake Organization",
+		  "startdate": "2007-03-15",
+		  "enddate": "2011-05-04",
+		  "location": "New Jack City",
+		  "long_desc": "<ul><li>Bullet describing my job</li><li>Hey it's another bullet describing my job, how about that</li></ul>"
+	  }
+  },
+  {
+	  "model": "portfolio.role",
+	  "pk": 3,
+	  "fields": {
+		  "name": "fake role 3",
+		  "slug": "fake-role-3",
+		  "order": 3,
 		  "org": "Fake Organization",
 		  "startdate": "2007-03-15",
 		  "enddate": "2011-05-04",

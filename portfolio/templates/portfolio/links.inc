@@ -1,0 +1,1 @@
+<p><a href="{% url 'portfolio' %}">portfolio</a> • <a href="{% url 'resume' %}">resume</a></p>

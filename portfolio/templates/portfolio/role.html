@@ -6,6 +6,7 @@
 	
 </head>
 <body id="home" onload="">
+	{% include "portfolio/links.inc" %}
 	<h1>{{ role.name }}</h1>
 	<h3>{{ role.org }}, {{ role.location }} | {{ role.startdate|date }} - {{ role.enddate|date }}</h3>
 	{{ role.long_desc|safe }}
