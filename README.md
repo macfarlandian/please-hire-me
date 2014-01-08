@@ -13,13 +13,13 @@ When built out, it should also generate a more traditionally printable (PDF) and
 * build up a template collection for different display options
 
 ## Unresolved questions:
-* "Context" and "Block" are confusing names. Propose **"Role"** and **"Section"** as replacements.
+* ~~"Context" and "Block" are confusing names. Propose **"Role"** and **"Section"** as replacements.~~
 * Resume frontend should support a wide variety of combinations and groupings (e.g., many jobs, one org). As long as these don't require data beyond our models, OK to handle this in the view/template layer? 
 * Implement tagging feature? 
 
 ## Data model
 
-![ER diagram](/docs/img/PleaseHireMeER.png "Entity-Relationship diagram")
+![ER diagram](https://raw2.github.com/macfarlandian/please-hire-me/master/docs/img/PleaseHireMeER.png "Entity-Relationship diagram")
 
 **ResumeHeader**
 
@@ -121,17 +121,17 @@ I've found it instructive so far to map the resume model to actual resumes to di
 Below are some (anonymized) examples, feel free to add your own. 
 
 ### Model: Resume
-![resume](/docs/img/resume1.png)
-![resume](/docs/img/resume2.png)
-![resume](/docs/img/resume3.png)
-![resume](/docs/img/resume4.png)
+![resume](https://raw2.github.com/macfarlandian/please-hire-me/master/docs/img/resume1.png)
+![resume](https://raw2.github.com/macfarlandian/please-hire-me/master/docs/img/resume2.png)
+![resume](https://raw2.github.com/macfarlandian/please-hire-me/master/docs/img/resume3.png)
+![resume](https://raw2.github.com/macfarlandian/please-hire-me/master/docs/img/resume4.png)
 
 
 ### Model: Role
-![context](/docs/img/context1.png)
-![context](/docs/img/context2.png)
-![context](/docs/img/context3.png)
-![context](/docs/img/context4.png)
+![context](https://raw2.github.com/macfarlandian/please-hire-me/master/docs/img/context1.png)
+![context](https://raw2.github.com/macfarlandian/please-hire-me/master/docs/img/context2.png)
+![context](https://raw2.github.com/macfarlandian/please-hire-me/master/docs/img/context3.png)
+![context](https://raw2.github.com/macfarlandian/please-hire-me/master/docs/img/context4.png)
 
 ## requirements
 * Python 2.7x
