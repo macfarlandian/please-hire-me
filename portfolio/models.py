@@ -40,7 +40,7 @@ class ResumeHeader(models.Model):
         
     # admin display name
     def __unicode__(self):
-        return "resume header: {} {} ({})".format(self.first_name, 
+        return "{} {} ({})".format(self.first_name, 
             self.last_name, self.pk)
 
 class ResumeSection(models.Model):
@@ -56,11 +56,15 @@ class ResumeSection(models.Model):
     header = models.ForeignKey('ResumeHeader', related_name="sections",
         help_text = "the Resume Header this Section should appear under")
     order = models.IntegerField(help_text="integer indicating order within resume")
-    roles = models.ManyToManyField('Role',
+    roles = models.ManyToManyField('Role', related_name="section",
         help_text="Roles to be collected in this Section, if any",
         null=True, blank=True)
     summary = models.TextField(help_text="additional text or html content to be displayed in this section",
         null=True,blank=True)
+    
+    # configuration options
+    class Meta:
+        ordering = ['header', 'order', 'name']
     
     # admin display name
     def __unicode__(self):
@@ -96,6 +100,10 @@ class Role(models.Model):
     long_desc = models.TextField(null=True,blank=True, 
         help_text="long text/html description of this role, for resume display")
     
+    # configuration options
+    class Meta:
+        ordering = ['section__name', 'order', 'name']
+    
     # admin display name
     def __unicode__(self):
         return self.name
@@ -125,7 +133,7 @@ class Project(models.Model):
     
     # configuration options
     class Meta:
-        ordering = ['order']
+        ordering = ['order', 'name']
 
     # admin display name
     def __unicode__(self):
@@ -151,7 +159,7 @@ class Detail(models.Model):
     
     # configuration options
     class Meta:
-        ordering = ['order']
+        ordering = ['project__name', 'order', 'name']
 
     # admin display name
     def __unicode__(self):
