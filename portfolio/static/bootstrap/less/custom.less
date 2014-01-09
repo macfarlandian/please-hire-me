@@ -9,6 +9,23 @@
 // nested stacked navs
 .nav-stacked {
 	ul {
-		margin-left: 15px;
+		margin-left: (@grid-gutter-width / 2);
+	}
+}
+
+// fix the screwy width for affixed sidebar column
+@sidebar-cols: 2;
+.sidebar.affix {
+	@media (max-width: @grid-float-breakpoint){
+		position: relative;
+	}
+	@media (min-width: @screen-sm-min) {
+		width: ((@sidebar-cols / @grid-columns) * @container-sm  - (@grid-gutter-width / 2));
+	}
+	@media (min-width: @screen-md-min) {
+		width: ((@sidebar-cols / @grid-columns) * @container-md  - (@grid-gutter-width / 2));
+	}
+	@media (min-width: @screen-lg-min) {
+		width: ((@sidebar-cols / @grid-columns) * @container-lg  - (@grid-gutter-width / 2));
 	}
 }
