@@ -1,15 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
-	<title>resume</title>
-	
-</head>
-<body id="home" onload="">
-	{% include "portfolio/links.inc" %}
-	<h1>best résumé ever, man</h1>
-	<h2>{{header.first_name}} {{header.last_name}}</h2>
-	<h3>{{header.address_city}}, {{header.address_state}} • {{header.phone}} • {{header.email}}</h3>
+{% extends "portfolio/base.html" %}
+
+{% block title %}Resume | {{ name.first }} {{ name.last }}{% endblock title %}
+
+{% block resume-nav-classes %} active {% endblock resume-nav-classes %}
+
+{% block content %}
+	<div class="page-header text-right">
+	<h1>{{header.first_name}} {{header.last_name}}<br/>
+		<small>{{header.address_city}}, {{header.address_state}} • {{header.phone}} • {{header.email}}</small>
+	</h1>
+	</div>
 	{% for section in header.sections.all %}
 	<div>
 		<h4>{{section.name}}</h4>
@@ -17,8 +17,15 @@
 		{% if section.roles %}{% for role in section.roles.all %}
 		<p><em>{{role.name}}</em></p>
 		{{role.long_desc|safe}}
+			{% if role.projects %}
+			<p> Projects: 
+			{% for project in role.projects.all %}
+			<a href="{% url 'project' slug=project.slug %}">{{ project.name }}</a>&nbsp;
+			{% endfor %}
+			</p>
+			{% endif %}
 		{% endfor %}{% endif %}
 	</div>	
 	{% endfor %}
-</body>
-</html>
+
+{% endblock content %}

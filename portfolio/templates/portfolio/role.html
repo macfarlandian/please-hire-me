@@ -1,19 +1,19 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
-	<title>home</title>
-	
-</head>
-<body id="home" onload="">
-	{% include "portfolio/links.inc" %}
-	<h1>{{ role.name }}</h1>
-	<h3>{{ role.org }}, {{ role.location }} | {{ role.startdate|date }} - {{ role.enddate|date }}</h3>
+{% extends "portfolio/base.html" %}
+
+{% block title %}{{ role.name }} | {{ name.first }} {{ name.last }}{% endblock title %}
+
+{% block resume-nav-sub %}
+<ul class="nav nav-pills nav-stacked">
+	<li class="active"><a>{{ role.name }}</a></li>
+</ul>
+{% endblock resume-nav-sub %}
+
+{% block content %}
+	<h2>{{ role.name }} <br/>
+	<small>{{ role.org }}, {{ role.location }} | {{ role.startdate|date }} - {{ role.enddate|date }}</small>
+	</h2>
 	{{ role.long_desc|safe }}
 	{% for project in role.projects.all %}
 	<p>Project: <a href="{% url 'project' slug=project.slug %}">{{ project.name }}</a></p>
 	{% endfor %}
-		
-	
-</body>
-</html>
+{% endblock content %}
