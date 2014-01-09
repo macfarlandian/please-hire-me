@@ -21,24 +21,28 @@
     <![endif]-->
 </head>
 <body>
-	<div class="container">
-		<div class="sidebar col-sm-2" data-spy="affix">
-			{% block sidebar-name %}<h1>{{ name.first }} {{ name.last }}</h1>    {% endblock sidebar-name %}
-			<ul class="nav nav-pills nav-stacked">
-				<li class="{% block portfolio-nav-classes %}{% endblock portfolio-nav-classes %}"><a href="{% url 'portfolio' %}">portfolio</a>
+<div class="container">
+	<div class="sidebar col-sm-3" data-spy="affix">
+		<h3><span class="small">{{ name.first }} {{ name.last }}</span></h3>
+		<ul class="nav nav-pills nav-stacked">
+			<li class="{% block portfolio-nav-classes %}
+				{% endblock portfolio-nav-classes %}">
+				<a href="{% url 'portfolio' %}">portfolio</a>
 				{% block portfolio-nav-sub %}
 				{% endblock portfolio-nav-sub %}
-				</li>
-				<li class="{% block resume-nav-classes %}{% endblock resume-nav-classes %}"><a href="{% url 'resume' %}">resume</a>
-					{% block resume-nav-sub %}
-					{% endblock resume-nav-sub %}
-				</li>
-			</ul>
-		</div>
-		<div class="col-sm-10 col-sm-offset-2">
-		{% block content %}{% endblock content %}
-		</div>
-	</div>    
+			</li>
+			<li class="{% block resume-nav-classes %}
+				{% endblock resume-nav-classes %}">
+				<a href="{% url 'resume' %}">resume</a>
+				{% block resume-nav-sub %}
+				{% endblock resume-nav-sub %}
+			</li>
+		</ul>
+	</div>
+	<div class="col-sm-9 col-sm-offset-3">
+	{% block content %}{% endblock content %}
+	</div>
+</div>    
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->   
 <script src="https://code.jquery.com/jquery.js"></script>   
 <!-- Include all compiled plugins (below), or include individual files as needed -->   
