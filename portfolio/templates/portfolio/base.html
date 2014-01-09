@@ -5,7 +5,13 @@
     <title>{% block title %}{{ name.first }} {{ name.last }}{% endblock title %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
-    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+	
+	{# dev only: client-side LESS #}
+	<link rel="stylesheet/less" type="text/css" href="{% static 'bootstrap/less/bootstrap.less' %}" />
+	<script src="{% static 'bootstrap/js/less-1.6.0.min.js' %}" type="text/javascript" charset="utf-8"></script>
+	
+    {# for production: compiled CSS #}
+	{# <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet"> #}
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
