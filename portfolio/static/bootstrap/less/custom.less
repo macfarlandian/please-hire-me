@@ -15,7 +15,7 @@
 
 // fix the screwy width for affixed sidebar column
 @sidebar-cols: 3;
-.sidebar.affix {
+#sidebar.affix {
 	@media (max-width: @grid-float-breakpoint){
 		position: relative;
 	}
@@ -27,5 +27,17 @@
 	}
 	@media (min-width: @screen-lg-min) {
 		width: ((@sidebar-cols / @grid-columns) * @container-lg  - (@grid-gutter-width / 2));
+	}
+}
+
+// for cleaner effects
+#content-container {
+	overflow: hidden;
+}
+
+// project detail display
+.project {
+	.detail {
+		margin-top: (@line-height-computed * 2);
 	}
 }
