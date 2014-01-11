@@ -10,12 +10,14 @@ When built out, it should also generate a more traditionally printable (PDF) and
 * ~~finalize models~~
 * ~~update models.py with final models~~
 * ~~create views for portfolio, project, resume, context~~
+* allow many-to-many relationships from projects to roles
+* implement tagging system for projects and roles
 * build up a template collection for different display options (especially aggregating roles by org in resume)
 
 ## Unresolved questions:
 * ~~"Context" and "Block" are confusing names. Propose **"Role"** and **"Section"** as replacements.~~
 * ~~Resume frontend should support a wide variety of combinations and groupings (e.g., many jobs, one org). As long as these don't require data beyond our models, OK to handle this in the view/template layer?~~ 
-* Implement tagging feature? 
+* ~~Implement tagging feature?~~
 
 ## Data model
 
