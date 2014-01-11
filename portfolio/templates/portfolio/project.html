@@ -13,7 +13,7 @@
 <div class="row project">
 	<h1>{{ project.name }}<br/>
 		<small><a href="{% url 'role' slug=project.role.slug %}">
-			{{ project.role.name }}
+			{% firstof project.role.org project.role.name %}
 		</a></small>
 	</h1>
 	{{ project.intro|safe }}

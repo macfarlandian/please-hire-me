@@ -13,7 +13,7 @@
 			<a href="{% url 'project' slug=project.slug %}">
 				{{ project.name }}</a><br/>
 			<small><a href="{% url 'role' slug=project.role.slug %}">
-				{{ project.role.name }}</a></small>
+				{% firstof project.role.org project.role.name %}</a></small>
 		</h2>
 		<div class="lead">          
 			{% if project.index_image %}
