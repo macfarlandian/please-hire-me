@@ -9,11 +9,5 @@
 {% endblock resume-nav-sub %}
 
 {% block content %}
-	<h2>{{ role.name }} <br/>
-	<small>{{ role.org }}, {{ role.location }} | {{ role.startdate|date }} - {{ role.enddate|date }}</small>
-	</h2>
-	{{ role.long_desc|safe }}
-	{% for project in role.projects.all %}
-	<p>Project: <a href="{% url 'project' slug=project.slug %}">{{ project.name }}</a></p>
-	{% endfor %}
+	{% include "portfolio/includes/role-single.inc" %}
 {% endblock content %}
