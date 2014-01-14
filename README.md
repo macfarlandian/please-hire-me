@@ -5,6 +5,9 @@ The goal for this app is to enable the creation of an integrated portfolio/resum
 
 When built out, it should also generate a more traditionally printable (PDF) and plaintext version of the resume from the data contained on the site, to eliminate the redundant labor of creating these documents manually. 
 
+For now, the frontend templates are intentionally unfinished; because it arose from a community of UX designers, the aim of this app is to serve as a flexible backend for a variety of frontend designs, showcasing the design skills of its users rather than supporting a collection of cookie-cutter portfolio sites.
+
+
 ## TODO
 
 * ~~finalize models~~
