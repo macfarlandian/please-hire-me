@@ -40,9 +40,11 @@ class RoleAdmin(SlugAdmin, RichTextAdmin, ReorderAdmin):
 class DetailAdminInline(admin.StackedInline):
     model = models.Detail
     extra = 0
+    exclude = ['img_width', 'img_height']
     
 class ProjectAdmin(SlugAdmin, RichTextAdmin, ReorderAdmin):
     list_display = ['order', 'name', 'completion_date', 'role', _summary]
+    exclude = ['img_width', 'img_height']
     inlines = [DetailAdminInline]
 
 

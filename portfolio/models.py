@@ -125,7 +125,10 @@ class Project(models.Model):
     summary = models.TextField(null=True,blank=True,
         help_text="short summary of Project (for display in a list)")
     index_image = models.ImageField(upload_to='images/', null=True, blank=True, 
+        width_field='img_width', height_field='img_height', 
         help_text="upload an image file for display in project list")
+    img_height = models.IntegerField(null=True, blank=True)
+    img_width = models.IntegerField(null=True, blank=True)
     intro = models.TextField(null=True,blank=True, 
         help_text="longer text/html introductory description of this Project")
         
@@ -152,8 +155,11 @@ class Detail(models.Model):
         help_text="integer indicating order within Project")
     desc = models.TextField(null=True,blank=True,
         help_text="text description or caption")
-    img = models.ImageField(upload_to='images/', null=True, blank=True, 
+    img = models.ImageField(upload_to='images/', null=True, blank=True,
+        width_field='img_width', height_field='img_height', 
         help_text="upload an image file to create a visual bullet or slideshow slide")
+    img_height = models.IntegerField(null=True, blank=True)
+    img_width = models.IntegerField(null=True, blank=True)    
     video = EmbedVideoField(null=True, blank=True,
         help_text="paste a YouTube, Vimeo or SoundCloud URL to embed it on your project page")
     

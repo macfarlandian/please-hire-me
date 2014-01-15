@@ -17,7 +17,7 @@
 		</h2>
 		<div class="lead">          
 			{% if project.index_image %}
-			<img src="{{ project.index_image.url }}" alt="{{ project.name }}" class="pull-left img-thumbnail"/>
+			<img width="{{ project.img_width }}" height="{{ project.img_height }}" src="{{ project.index_image.url }}" alt="{{ project.name }}" class="pull-left img-thumbnail"/>
 			{% endif %}
 			{{ project.summary|safe }}
 		</div>  

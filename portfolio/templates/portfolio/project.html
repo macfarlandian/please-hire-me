@@ -21,6 +21,7 @@
 			<figure class="clearfix detail">
 			{% if detail.img %}
 				<img class="img-responsive" 
+					width="{{ detail.img_width }}" height="{{ detail.img_height }}"
 					src="{{ detail.img.url }}" alt="{{ detail.name }}">	
 			{% elif detail.video %}		
 				{{ detail.video|embed:'medium' }}
