@@ -23,6 +23,9 @@
 <body>
 <div class="container">
 	<div class="col-sm-3" data-spy="affix" id="sidebar">
+		{% if name.photo %}
+		<img class="img-responsive" src="{{name.photo.url}}" width="{{name.w}}" height="{{name.h}}"/>
+		{% endif %}
 		<h3>{{ name.first }} {{ name.last }}</h3>
 		<ul class="nav nav-pills nav-stacked">
 			<li class="{% block portfolio-nav-classes %}

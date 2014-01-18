@@ -9,6 +9,9 @@ name = {}
 header = models.ResumeHeader.objects.get(pk=1)
 name['first'] = header.first_name
 name['last'] = header.last_name
+name['photo'] = header.photo
+name['w'] = header.img_width
+name['h'] = header.img_height
 
 def portfolio(request):
     project_list = models.Project.objects.all()

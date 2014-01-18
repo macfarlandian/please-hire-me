@@ -19,6 +19,9 @@ def _summary(obj):
     return obj.summary
 _summary.allow_tags = True
 
+class HeaderAdmin(RichTextAdmin):
+    exclude = ['img_width', 'img_height']
+
 class SectionAdmin(RichTextAdmin, ReorderAdmin):
     filter_horizontal = ['roles']
     list_display = ['order', 'name', _summary, 'header']
@@ -48,8 +51,7 @@ class ProjectAdmin(SlugAdmin, RichTextAdmin, ReorderAdmin):
     inlines = [DetailAdminInline]
 
 
-admin.site.register(models.ResumeHeader, RichTextAdmin)
+admin.site.register(models.ResumeHeader, HeaderAdmin)
 admin.site.register(models.ResumeSection, SectionAdmin)
 admin.site.register(models.Role, RoleAdmin)
 admin.site.register(models.Project, ProjectAdmin)
-# admin.site.register(models.Detail, RichTextAdmin)

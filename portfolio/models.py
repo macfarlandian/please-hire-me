@@ -37,6 +37,11 @@ class ResumeHeader(models.Model):
     other = models.CharField(max_length=255, 
         help_text="any other information you want appear in your resume header", 
         null=True, blank=True)
+    photo = models.ImageField(upload_to='images/', null=True, blank=True, 
+        width_field='img_width', height_field='img_height', 
+        help_text="upload an image of yourself to display in the sidebar")
+    img_height = models.IntegerField(null=True, blank=True)
+    img_width = models.IntegerField(null=True, blank=True)
         
     # admin display name
     def __unicode__(self):
